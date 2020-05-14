@@ -12,7 +12,9 @@ class Mancala
   end
 
   def play
+    puts
     puts "Welcome. Let's play Mancala"
+    puts
     board.render
     current_player = player1
 
@@ -69,6 +71,7 @@ class Mancala
     puts "\nCup indices: "
     puts "12  11  10   9   8   7"
     puts " 1   2   3   4   5   6"
+    puts
   end
 
   private
