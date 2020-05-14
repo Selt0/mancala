@@ -18,6 +18,12 @@ class Board
     end
   end
 
+  def valid_move?(start_pos)
+    raise 'Invalid starting cup' if start_pos < 0 || start_pos > 12
+    
+    raise 'Starting cup is empty' if cups[start_pos].empty?
+  end
+
   def make_move(start_pos, current_player_name)
     # grab the stones from the start_pos
     stones = cups[start_pos]
@@ -65,6 +71,19 @@ class Board
     print "  #{cups.take(6).map { |cup| cup.count } }  \n"
     puts
     puts
+  end
+
+  def one_side_empty?
+    cups.take(6).all? { |cup| cup.empty? } ||
+    cups[7..12].all? { |cup| cup.empty? }
+  end
+
+  def winner
+    player1_score = cups[6].length
+    player2_score = cups[13].length
+    return :draw if player1_score == player2_score
+
+    player1_score > player2_score ? player1 : player2
   end
 
   private
