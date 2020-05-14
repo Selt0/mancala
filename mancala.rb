@@ -55,6 +55,22 @@ class Mancala
   def switch_turn
     current_player = current_player == player1 ? player2 : player1
   end
+
+  def winner_message
+    winner = board.winner
+    if winner == :draw
+      "It was a draw!"
+    else
+      "Congrats, #{winner}!"
+    end
+  end
+
+  def print_indices
+    puts "\nCup indices: "
+    puts "12  11  10   9   8   7"
+    puts " 1   2   3   4   5   6"
+  end
+
   private
 
   attr_reader :board
