@@ -37,13 +37,12 @@ class Board
       cup_idx += 1
       # overlap the board
       cup_idx = 0 if cup_idx > 13
-
       # player 1 places a stone in their score cup
-      if cup_idx == 6 && current_player_name == player1
-        cups[6] << stones.pop 
+      if cup_idx == 6 
+        cups[6] << stones.pop if current_player_name == player1
       # player 2 places a stone in their score cup
-      elsif cup_idx == 13 && current_player_name == player2
-        cups[13] << stones.pop
+      elsif cup_idx == 13  
+        cups[13] << stones.pop if current_player_name == player2
       else
         cups[cup_idx] << stones.pop
       end
